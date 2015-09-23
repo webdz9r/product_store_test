@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @spec.name %>
+</p>
+
+<p>
+  <strong>Promo title:</strong>
+  <%= @spec.promo_title %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @spec.value %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @spec.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_spec_path(@spec) %> |
+<%= link_to 'Back', specs_path %>

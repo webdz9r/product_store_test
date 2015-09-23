@@ -36,6 +36,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     arel (6.0.3)
     aws-sdk (1.66.0)
       aws-sdk-v1 (= 1.66.0)
@@ -176,6 +178,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry
   aws-sdk (< 2.0)
   bootstrap_form
   byebug

@@ -53,4 +53,6 @@ gem "twitter-bootstrap-rails"
 gem 'bootstrap_form'
 gem "paperclip"
 gem 'aws-sdk', '< 2.0'
-gem 'rails4-autocomplete'
+gem 'rails4-autocomplete' #https://github.com/peterwillcn/rails4-autocomplete
+gem 'ancestry' # used for categories #
+

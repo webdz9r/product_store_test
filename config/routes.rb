@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :specs
+  resources :categories
   resources :companies
   resources :images do 
     get :autocomplete_image_role, :on => :collection
