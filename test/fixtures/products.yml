@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  short_name: MyString
+  short_summary: MyText
+  website: MyString
+  discontinued: 2015-09-22 18:39:36
+  upc: MyString
+  asin: MyString
+  launch_at: 2015-09-22 18:39:36
+  embargo_at: 2015-09-22 18:39:36
+
+two:
+  name: MyString
+  short_name: MyString
+  short_summary: MyText
+  website: MyString
+  discontinued: 2015-09-22 18:39:36
+  upc: MyString
+  asin: MyString
+  launch_at: 2015-09-22 18:39:36
+  embargo_at: 2015-09-22 18:39:36

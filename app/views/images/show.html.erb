@@ -1,0 +1,33 @@
+<%- model_class = Image -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:role) %>:</strong></dt>
+  <dd><%= @image.role %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @image.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:product_id) %>:</strong></dt>
+  <dd><%= @image.product_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:file_file_name) %>:</strong></dt>
+  <dd><%= @image.file_file_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:file_content_type) %>:</strong></dt>
+  <dd><%= @image.file_content_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:file_file_size) %>:</strong></dt>
+  <dd><%= @image.file_file_size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:file_updated_at) %>:</strong></dt>
+  <dd><%= @image.file_updated_at %></dd>
+</dl>
+
+<%= image_tag @image.file.url(:thumb) %><br />
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              images_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_image_path(@image), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              image_path(@image),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
