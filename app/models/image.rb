@@ -4,6 +4,10 @@ class Image < ActiveRecord::Base
 
   	belongs_to :product
 
+  	validates :product_id, :file, presence: true
+
   	attr_accessor :product_name
+
+  	scope :unique_role, -> { group(:role) }
   	
 end

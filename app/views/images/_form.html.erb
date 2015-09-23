@@ -1,16 +1,6 @@
 
 <%= bootstrap_form_for(@image, :html => { :multipart => true }) do |f| %>
   
-  <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Select Product to assign Image</h3>
-  </div>
-  <div class="panel-body">
-    <%= f.autocomplete_field :product_name, autocomplete_product_name_products_path, :id_element => '#image_product_id', :class => "form-control", :autocomplete => :off %>  
-  </div>
-</div>
-
-  
 
     <% if @image.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -27,8 +17,27 @@
     </div>
   <% end %>
 
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Select Product to assign Image</h3>
+  </div>
+  <div class="panel-body">
+    <%= f.autocomplete_field :product_name, autocomplete_product_name_products_path, :id_element => '#image_product_id', :class => "form-control", :autocomplete => :off %>  
+  </div>
+</div>
+
     <%= f.text_field :name %>
-  <%= f.text_field :role %>
+  
+
+  <div class="control-group">
+    <%= f.label :role, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.autocomplete_field :role, autocomplete_image_role_images_path, :class => "form-control", :autocomplete => :off %>  
+    </div>
+    <%= error_span(@image[:role]) %>
+  </div>
+  
+
   <%= f.file_field :file  %>
   <%= f.hidden_field :product_id %>
   

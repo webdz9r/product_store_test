@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :images
+  resources :companies
+  resources :images do 
+    get :autocomplete_image_role, :on => :collection
+  end
   
   resources :products do
     get :autocomplete_product_name, :on => :collection

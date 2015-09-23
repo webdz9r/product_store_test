@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923142417) do
+ActiveRecord::Schema.define(version: 20150923180856) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.string   "ticker",        limit: 255
+    t.date     "founded_date"
+    t.string   "hq_location",   limit: 255
+    t.text     "short_summary", limit: 65535
+    t.string   "website",       limit: 255
+    t.string   "twitter",       limit: 255
+    t.string   "instagram",     limit: 255
+    t.string   "linkedin",      limit: 255
+    t.string   "youtube",       limit: 255
+    t.string   "facebook",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "images", force: :cascade do |t|
     t.string   "role",              limit: 255
@@ -37,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150923142417) do
     t.datetime "embargo_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "company_id",    limit: 4
   end
 
 end

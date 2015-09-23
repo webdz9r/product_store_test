@@ -8,9 +8,8 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:role) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:product_id) %></th>
-
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Product</th>
+      <th>&nbsp;</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,9 +19,9 @@
         <td><%= link_to image.id, image_path(image) %></td>
         <td><%= image.role %></td>
         <td><%= image.name %></td>
-        <td><%= image.product_id %></td>
+        <td><%= image.product.name %></td>
+        <td><%= image_tag image.file.url(:thumb), :size => '50' %> </td>
 
-        <td><%=l image.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_image_path(image), :class => 'btn btn-default btn-xs' %>

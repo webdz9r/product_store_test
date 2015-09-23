@@ -17,14 +17,24 @@
   <% end %>
 
 
-  <%= f.text_field :name %>
+ <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Product Details</h3>
+  </div>
+  <div class="panel-body">
+    <%= f.text_field :name %>
   <%= f.text_field :short_name %>
   <%= f.text_field :website %>
-  <%= f.datetime_select :discontinued %>
   <%= f.text_field :upc %>
   <%= f.text_field :asin %>
+  <%= f.select(:company_id, Company.all.collect {|a| [a.name, a.id]}, :include_blank => true) -%>
+  <%= f.datetime_select :discontinued %>
   <%= f.datetime_select :launch_at %>
   <%= f.datetime_select :embargo_at %>
+  </div>
+</div>
+
+ 
   
   <%= f.submit nil, :class => 'btn btn-primary' %>
       

@@ -1,0 +1,51 @@
+
+<%= bootstrap_form_for(@company) do |f| %>
+
+    <% if @company.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+ <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Company Details</h3>
+  </div>
+  <div class="panel-body">
+    <%= f.text_field :name %>
+    <%= f.text_field :ticker %>
+    <%= f.text_field :hq_location %>
+    <%= f.text_field :short_summary %>
+    <%= f.text_field :website %>
+    <%= f.date_select :founded_date, start_year: 1960, end_year: Time.now.strftime('%Y').to_i, discard_day: true %>
+  </div>
+</div>
+
+ <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Social Details</h3>
+  </div>
+  <div class="panel-body">
+    <%= f.text_field :twitter %>
+    <%= f.text_field :facebook %>
+    <%= f.text_field :instagram %>
+    <%= f.text_field :linkedin %>
+    <%= f.text_field :youtube %>
+  </div>
+</div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            companies_path, :class => 'btn btn-default' %>
+
+<% end %>
