@@ -1,33 +1,35 @@
-<%= form_for(@spec) do |f| %>
-  <% if @spec.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@spec.errors.count, "error") %> prohibited this spec from being saved:</h2>
+<%= bootstrap_form_for(@spec) do |f| %>
 
-      <ul>
-      <% @spec.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @spec.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@spec.errors.count, "error") %> prohibited this spec from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @spec.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+   <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Spec Details</h3>
+  </div>
+  <div class="panel-body">
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :promo_title %><br>
     <%= f.text_field :promo_title %>
+
   </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
+  
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            specs_path, :class => 'btn btn-default' %>
+
 <% end %>

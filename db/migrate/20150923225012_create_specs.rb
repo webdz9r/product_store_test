@@ -4,9 +4,8 @@ class CreateSpecs < ActiveRecord::Migration
       t.string :name
       t.string :promo_title
       t.string :value
-      t.string :category_id
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end

@@ -3,11 +3,11 @@
 one:
   name: MyString
   promo_title: MyString
-  value: MyString
-  category_id: MyString
+  
+  
 
 two:
   name: MyString
   promo_title: MyString
-  value: MyString
-  category_id: MyString
+  
+  

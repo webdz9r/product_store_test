@@ -18,7 +18,7 @@ class SpecsControllerTest < ActionController::TestCase
 
   test "should create spec" do
     assert_difference('Spec.count') do
-      post :create, spec: { category_id: @spec.category_id, name: @spec.name, promo_title: @spec.promo_title, value: @spec.value }
+      post :create, spec: { name: @spec.name, promo_title: @spec.promo_title, value: @spec.value }
     end
 
     assert_redirected_to spec_path(assigns(:spec))
@@ -35,7 +35,7 @@ class SpecsControllerTest < ActionController::TestCase
   end
 
   test "should update spec" do
-    patch :update, id: @spec, spec: { category_id: @spec.category_id, name: @spec.name, promo_title: @spec.promo_title, value: @spec.value }
+    patch :update, id: @spec, spec: { name: @spec.name, promo_title: @spec.promo_title, value: @spec.value }
     assert_redirected_to spec_path(assigns(:spec))
   end
 

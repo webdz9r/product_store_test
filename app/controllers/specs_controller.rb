@@ -24,8 +24,9 @@ class SpecsController < ApplicationController
   # POST /specs
   # POST /specs.json
   def create
-    @spec = Spec.new(spec_params)
 
+    @spec = Spec.new(spec_params)
+  
     respond_to do |format|
       if @spec.save
         format.html { redirect_to @spec, notice: 'Spec was successfully created.' }
@@ -65,10 +66,11 @@ class SpecsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_spec
       @spec = Spec.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def spec_params
-      params.require(:spec).permit(:name, :promo_title, :value, :category_id)
+      params.require(:spec).permit(:name, :promo_title)
     end
 end
