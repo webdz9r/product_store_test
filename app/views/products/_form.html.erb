@@ -16,24 +16,69 @@
     </div>
   <% end %>
 
+<div class='row'>
+  <div class='col-lg-6'>
 
- <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Product Details</h3>
-  </div>
-  <div class="panel-body">
-    <%= f.text_field :name %>
-  <%= f.text_field :short_name %>
-  <%= f.text_field :website %>
-  <%= f.text_field :upc %>
-  <%= f.text_field :asin %>
-  <%= f.select(:company_id, Company.all.collect {|a| [a.name, a.id]}, :include_blank => true) -%>
-  <%= f.datetime_select :discontinued %>
-  <%= f.datetime_select :launch_at %>
-  <%= f.datetime_select :embargo_at %>
-  </div>
+     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Product Details</h3>
+      </div>
+      <div class="panel-body">
+        <%= f.text_field :name %>
+      <%= f.text_field :short_name %>
+      <%= f.text_field :website %>
+      <%= f.text_field :upc %>
+      <%= f.text_field :asin %>
+      <%= f.select(:company_id, Company.all.collect {|a| [a.name, a.id]}, :include_blank => true) -%>
+      <%= f.select(:category_id, Category.order(:names_depth_cache).map { |c| ["- " * c.depth + c.name,c.id] }, :include_blank => true) -%>
+      <%= f.datetime_select :discontinued %>
+      <%= f.datetime_select :launch_at %>
+      <%= f.datetime_select :embargo_at %>
+
+      </div>
+    </div>
+  </div> <!-- end of col-lg-6 -->
+  <div class='col-lg-6'>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Spec Assignment</h3>
+      </div>
+      <div class="panel-body">
+        
+
+      
+      <%= f.collection_check_boxes(:spec_ids, Spec.all, :id, :name) %>
+      
+
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Spec Detail Values</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-horizontal">
+        <% for detail in @product.details %>
+          
+          <div class="form-group">  
+            <label for="<%= detail.spec.name %>" class='col-sm-2 control-label'><%= detail.spec.name %></label>
+            <div class="col-sm-10">
+              <%= hidden_field_tag 'details[][id]', detail.id %>
+              <%= text_field_tag 'details[][value]', detail.value %>
+            </div>
+          </div>
+        <% end %>
+        
+        </div>
+
+      </div>
+    </div>
+
+  </div> <!-- end of col-lg -->
+
 </div>
-
  
   
   <%= f.submit nil, :class => 'btn btn-primary' %>

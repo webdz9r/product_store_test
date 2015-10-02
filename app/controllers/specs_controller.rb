@@ -15,6 +15,7 @@ class SpecsController < ApplicationController
   # GET /specs/new
   def new
     @spec = Spec.new
+    
   end
 
   # GET /specs/1/edit
@@ -71,6 +72,6 @@ class SpecsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def spec_params
-      params.require(:spec).permit(:name, :promo_title)
+      params.require(:spec).permit(:name, :promo_title, { category_ids:[] })
     end
 end

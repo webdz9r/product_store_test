@@ -15,18 +15,27 @@
     </div>
   <% end %>
 
-   <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Spec Details</h3>
-  </div>
-  <div class="panel-body">
-    <%= f.text_field :name %>
-    <%= f.text_field :promo_title %>
 
-  </div>
-</div>
-  
 
+         <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Spec Details</h3>
+        </div>
+        <div class="panel-body">
+          <%= f.text_field :name %>
+          <%= f.text_field :promo_title %>
+
+          <h3>Category Assignment</h3>
+          <% for category in Category.order(:names_depth_cache).map { |c| [c.name,c.id,c.names_depth_cache] } %>
+            <div>
+              <%= check_box_tag "spec[category_ids][]", category[1], @spec.categories.include?(Category.find(category[1])) %>
+              
+              <%= category[2].strip.gsub("/", " > ") + " > " unless category[2].blank? %>
+              <%= category[0] %>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
