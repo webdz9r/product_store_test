@@ -1,0 +1,62 @@
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:company_id) %></th>
+      <th><%= model_class.human_attribute_name(:general_hashtag) %></th>
+      <th><%= model_class.human_attribute_name(:internal_hashtag) %></th>
+      <th><%= model_class.human_attribute_name(:start_date) %></th>
+      <th><%= model_class.human_attribute_name(:end_date) %></th>
+      <th><%= model_class.human_attribute_name(:location) %></th>
+      <th><%= model_class.human_attribute_name(:short_summary) %></th>
+      <th><%= model_class.human_attribute_name(:website) %></th>
+      <th><%= model_class.human_attribute_name(:twitter) %></th>
+      <th><%= model_class.human_attribute_name(:instagram) %></th>
+      <th><%= model_class.human_attribute_name(:linked_in) %></th>
+      <th><%= model_class.human_attribute_name(:youtube) %></th>
+      <th><%= model_class.human_attribute_name(:facebook) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.id, event_path(event) %></td>
+        <td><%= event.name %></td>
+        <td><%= event.company_id %></td>
+        <td><%= event.general_hashtag %></td>
+        <td><%= event.internal_hashtag %></td>
+        <td><%= event.start_date %></td>
+        <td><%= event.end_date %></td>
+        <td><%= event.location %></td>
+        <td><%= event.short_summary %></td>
+        <td><%= event.website %></td>
+        <td><%= event.twitter %></td>
+        <td><%= event.instagram %></td>
+        <td><%= event.linked_in %></td>
+        <td><%= event.youtube %></td>
+        <td><%= event.facebook %></td>
+        <td><%=l event.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_event_path(event), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      event_path(event),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_event_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,37 @@
+<%- model_class = Personality -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @personality.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:position_id) %>:</strong></dt>
+  <dd><%= @personality.position_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:company_id) %>:</strong></dt>
+  <dd><%= @personality.company_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:short_summary) %>:</strong></dt>
+  <dd><%= @personality.short_summary %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:website) %>:</strong></dt>
+  <dd><%= @personality.website %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:twitter) %>:</strong></dt>
+  <dd><%= @personality.twitter %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:instagram) %>:</strong></dt>
+  <dd><%= @personality.instagram %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:linked_in) %>:</strong></dt>
+  <dd><%= @personality.linked_in %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:youtube) %>:</strong></dt>
+  <dd><%= @personality.youtube %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:facebook) %>:</strong></dt>
+  <dd><%= @personality.facebook %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              personalities_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_personality_path(@personality), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              personality_path(@personality),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

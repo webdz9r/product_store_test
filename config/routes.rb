@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :positions
+  resources :personalities
+  resources :events
   resources :specs
   resources :categories
   resources :companies

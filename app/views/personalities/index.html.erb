@@ -1,0 +1,54 @@
+<%- model_class = Personality -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:position_id) %></th>
+      <th><%= model_class.human_attribute_name(:company_id) %></th>
+      <th><%= model_class.human_attribute_name(:short_summary) %></th>
+      <th><%= model_class.human_attribute_name(:website) %></th>
+      <th><%= model_class.human_attribute_name(:twitter) %></th>
+      <th><%= model_class.human_attribute_name(:instagram) %></th>
+      <th><%= model_class.human_attribute_name(:linked_in) %></th>
+      <th><%= model_class.human_attribute_name(:youtube) %></th>
+      <th><%= model_class.human_attribute_name(:facebook) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @personalities.each do |personality| %>
+      <tr>
+        <td><%= link_to personality.id, personality_path(personality) %></td>
+        <td><%= personality.name %></td>
+        <td><%= personality.position_id %></td>
+        <td><%= personality.company_id %></td>
+        <td><%= personality.short_summary %></td>
+        <td><%= personality.website %></td>
+        <td><%= personality.twitter %></td>
+        <td><%= personality.instagram %></td>
+        <td><%= personality.linked_in %></td>
+        <td><%= personality.youtube %></td>
+        <td><%= personality.facebook %></td>
+        <td><%=l personality.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_personality_path(personality), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      personality_path(personality),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_personality_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,33 @@
+<%= bootstrap_form_for(@position) do |f| %>
+
+    <% if @position.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@position.errors.count, "error") %> prohibited this position from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @position.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Position Details</h3>
+        </div>
+        <div class="panel-body">
+          <%= f.text_field :name %>
+          <%= f.text_field :short_name %>
+        </div>
+    </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            positions_path, :class => 'btn btn-default' %>
+
+<% end %>

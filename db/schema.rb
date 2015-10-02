@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001192006) do
+ActiveRecord::Schema.define(version: 20151002151143) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",              limit: 255
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151001192006) do
     t.string   "facebook",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ceo_id",        limit: 4
   end
 
   create_table "details", force: :cascade do |t|
@@ -56,6 +57,35 @@ ActiveRecord::Schema.define(version: 20151001192006) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",             limit: 255
+    t.integer  "company_id",       limit: 4
+    t.string   "general_hashtag",  limit: 255
+    t.string   "internal_hashtag", limit: 255
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "location",         limit: 255
+    t.text     "short_summary",    limit: 65535
+    t.string   "website",          limit: 255
+    t.string   "twitter",          limit: 255
+    t.string   "instagram",        limit: 255
+    t.string   "linked_in",        limit: 255
+    t.string   "youtube",          limit: 255
+    t.string   "facebook",         limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "latitude",         limit: 255
+    t.string   "longitude",        limit: 255
+  end
+
+  create_table "events_personalities", id: false, force: :cascade do |t|
+    t.integer "personality_id", limit: 4
+    t.integer "event_id",       limit: 4
+  end
+
+  add_index "events_personalities", ["event_id"], name: "index_personalities_events_on_event_id", using: :btree
+  add_index "events_personalities", ["personality_id"], name: "index_personalities_events_on_personality_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "role",              limit: 255
@@ -67,6 +97,28 @@ ActiveRecord::Schema.define(version: 20151001192006) do
     t.string   "file_content_type", limit: 255
     t.integer  "file_file_size",    limit: 4
     t.datetime "file_updated_at"
+  end
+
+  create_table "personalities", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.integer  "position_id",   limit: 4
+    t.integer  "company_id",    limit: 4
+    t.text     "short_summary", limit: 65535
+    t.string   "website",       limit: 255
+    t.string   "twitter",       limit: 255
+    t.string   "instagram",     limit: 255
+    t.string   "linked_in",     limit: 255
+    t.string   "youtube",       limit: 255
+    t.string   "facebook",      limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "short_name", limit: 255
   end
 
   create_table "products", force: :cascade do |t|

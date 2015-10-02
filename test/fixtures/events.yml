@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  company_id: 1
+  general_hashtag: MyString
+  internal_hashtag: MyString
+  start_date: 2015-10-02 08:04:29
+  end_date: 2015-10-02 08:04:29
+  location: MyString
+  short_summary: MyText
+  website: MyString
+  twitter: MyString
+  instagram: MyString
+  linked_in: MyString
+  youtube: MyString
+  facebook: MyString
+
+two:
+  name: MyString
+  company_id: 1
+  general_hashtag: MyString
+  internal_hashtag: MyString
+  start_date: 2015-10-02 08:04:29
+  end_date: 2015-10-02 08:04:29
+  location: MyString
+  short_summary: MyText
+  website: MyString
+  twitter: MyString
+  instagram: MyString
+  linked_in: MyString
+  youtube: MyString
+  facebook: MyString

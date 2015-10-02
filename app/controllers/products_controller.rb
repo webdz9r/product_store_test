@@ -46,10 +46,12 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         
         #process details #
+      if params[:details]
         params[:details].each do |detail|
           detail_record = @product.details.where(id: detail['id']).first
           detail_record.update_attribute(:value, detail['value']) unless detail_record.nil?   
         end
+      end
 
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
