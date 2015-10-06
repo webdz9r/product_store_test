@@ -42,9 +42,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => 'metavisor',
-    :access_key_id => 'AKIAJ6LY7DSI7BRJCEZQ',
-    :secret_access_key => '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'
+    :bucket => '',
+    :access_key_id => '',
+    :secret_access_key => ''
   }
 }
 end
